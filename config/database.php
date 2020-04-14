@@ -40,10 +40,10 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'laravelTasks.mysql.database.azure.com'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
+            'database' => env('DB_DATABASE', 'sampledb'),
+            'username' => env('DB_USERNAME', 'phpappuser@laravelTasks'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8',
@@ -51,6 +51,10 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+            'sslmode' => env('DB_SSLMODE', 'prefer'),
+            'options' => (env('MYSQL_SSL') && extension_loaded('pdo_mysql')) ? [
+               PDO::MYSQL_ATTR_SSL_KEY    => '/ssl/BaltimoreCyberTrustRoot.crt.pem',
+            ] : []
         ],
 
         'pgsql' => [
