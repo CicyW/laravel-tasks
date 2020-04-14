@@ -11,13 +11,13 @@ variables:
   azureSubscription: 'c28cc9d7-8020-49b2-90e3-58bb2748711a'
   
   # Web app name
-  webAppName: 'laravelTasksDemo'
+  webAppName: 'laravelTasks'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
   # Environment name
-  environmentName: 'dev'
+  environmentName: 'production'
 
   # Root folder under which your composer.json file is available.
   rootFolder: $(System.DefaultWorkingDirectory)
