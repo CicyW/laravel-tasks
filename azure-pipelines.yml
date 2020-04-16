@@ -11,7 +11,7 @@ variables:
   azureSubscription: 'c28cc9d7-8020-49b2-90e3-58bb2748711a'
   
   # Web app name
-  webAppName: 'laravelTasks0416'
+  webAppName: 'laravelTasks0416-1'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
