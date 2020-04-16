@@ -42,7 +42,10 @@ stages:
       workingDirectory: $(rootFolder)
       displayName: 'Use PHP version $(phpVersion)'
     
-    - script: composer install --no-interaction --prefer-dist
+    - script: |
+        composer install --no-interaction --prefer-dist
+        env='production'
+        php artisan migrate  
       workingDirectory: $(rootFolder)
       displayName: 'Composer install'
 
