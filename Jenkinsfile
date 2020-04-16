@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
 
     stages {
         stage("Environment Check") {
@@ -16,9 +16,8 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Buliding..."
-                sh 'composer self-update'
+                sh 'composer update'
                 sh 'composer install -n --ignore-platform-reqs'
-                sh 'npm install'
                 sh 'php artisan key:generate --env=production --force'
                 sh 'php artisan migrate --env=production --force'
                 sh 'php artisan serve --env=production --port=8080 &'
