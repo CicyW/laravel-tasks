@@ -3,23 +3,27 @@ pipeline {
 
     stages {
         stage("Environment Check") {
-            echo "environment checking ..."
-            sh 'php --version'
-            sh 'composer --version'
-            sh 'npm --version'
-            sh 'mysql --version'
-            echo "environment check done."
+            steps {
+                echo "environment checking ..."
+                sh 'php --version'
+                sh 'composer --version'
+                sh 'npm --version'
+                sh 'mysql --version'
+                echo "environment check done."
+            }
         }
 
         stage("Build") {
-              echo "Buliding..."
-              sh 'composer self-update'
-              sh 'composer install -n --ignore-platform-reqs'
-              sh 'npm install'
-              sh 'php artisan key:generate --env=production --force'
-              sh 'php artisan migrate --env=production --force'
-              sh 'php artisan serve --env=production --port=8080 &'
-              echo "Build done."
+            steps {
+                echo "Buliding..."
+                sh 'composer self-update'
+                sh 'composer install -n --ignore-platform-reqs'
+                sh 'npm install'
+                sh 'php artisan key:generate --env=production --force'
+                sh 'php artisan migrate --env=production --force'
+                sh 'php artisan serve --env=production --port=8080 &'
+                echo "Build done."
+            }
         }
 
     }
