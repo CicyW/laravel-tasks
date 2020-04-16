@@ -44,8 +44,9 @@ stages:
     
     - script: |
         composer install --no-interaction --prefer-dist
-        env='production'
-        php artisan migrate  
+        php artisan migrate --env=$(environmentName) --force
+        php artisan key:generate --env=$(environmentName) --force
+        mv .env.$(environmentName) .env
       workingDirectory: $(rootFolder)
       displayName: 'Composer install'
 
