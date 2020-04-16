@@ -11,7 +11,7 @@ variables:
   azureSubscription: '62dcce52-ed2f-4eea-8546-1aed543b0c74'
   
   # Web app name
-  webAppName: 'project0416'
+  webAppName: 'freestyleproject'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
