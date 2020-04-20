@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-        Stage("Deploy") {
+        stage("Deploy") {
             steps {
                 echo "Deploying..."
                 sh 'php artisan key:generate --force'
