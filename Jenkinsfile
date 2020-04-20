@@ -18,10 +18,19 @@ pipeline {
                 echo "Buliding..."
                 sh 'composer update'
                 sh 'composer install -n --ignore-platform-reqs'
-                sh 'php artisan key:generate --env=production --force'
-                sh 'php artisan migrate --env=production --force'
-                sh 'php artisan serve --env=production --port=8080 &'
                 echo "Build done."
+            }
+        }
+
+        Stage("Deploy") {
+            steps {
+                echo "Deploying..."
+                sh 'php artisan key:generate --force'
+                sh 'sudo cp -r ./ /var/www/php'
+                sh 'sudo chown -R www-data:www-data /var/www/php'
+                sh 'sudo chmod -R 775 /var/www/php/storage'
+                sh 'sudo service apache2 restart'
+                echo "Deploy done..."
             }
         }
 
